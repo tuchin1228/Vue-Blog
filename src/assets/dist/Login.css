@@ -1,0 +1,73 @@
+.login {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-size: cover;
+}
+.login .login_signin,
+.login .login_signup {
+  box-shadow: 0 4px 15px #84bbff70;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 95%;
+  max-width: 500px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.658);
+}
+.login .login_signin h2,
+.login .login_signup h2 {
+  background: linear-gradient(90deg, #5eb7ff, #447fff);
+  color: white;
+  text-align: center;
+  padding: 1vh 0;
+  font-size: 2em;
+  font-weight: 600;
+}
+.login .login_signup h2 {
+  background: linear-gradient(90deg, #67d46c, #64a862);
+}
+.login .login_signin .v-text-field,
+.login .login_signup .v-text-field {
+  width: 80%;
+  margin: 0 auto;
+}
+.login .login_signin .v-text-field:nth-of-type(1),
+.login .login_signup .v-text-field:nth-of-type(1) {
+  margin-top: 30px;
+}
+.login .login_signin .login_btn,
+.login .login_signup .login_btn {
+  display: flex;
+  justify-content: space-around;
+}
+.login .login_signin .login_btn button,
+.login .login_signup .login_btn button {
+  width: 30%;
+  font-size: 1.2em;
+  background: linear-gradient(90deg, #5eb7ff, #447fff);
+  /* &:first-child {
+      background: linear-gradient(90deg, #67d46c, rgb(100, 168, 98));
+    } */
+  /* &:last-child {
+      background: linear-gradient(
+        90deg,
+        rgb(94, 183, 255),
+        rgb(68, 127, 255)
+      );
+    } */
+}
+.login .login_signup .login_btn button {
+  background: linear-gradient(90deg, #67d46c, #64a862);
+  /* &          :first-child {
+      background: linear-gradient(
+        90deg,
+        rgb(94, 183, 255),
+        rgb(68, 127, 255)
+      );
+    }
+    &           :last-child {
+      background: linear-gradient(90deg, #67d46c, rgb(100, 168, 98));
+    } */
+}

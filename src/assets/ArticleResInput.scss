@@ -1,0 +1,32 @@
+.ResInputBox {
+    padding   : 1vh 1vw;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    position  : fixed;
+    bottom    : 0;
+    background: white;
+    width     : 98%;
+    max-width : $middle_width;
+
+    .btn_group {
+        display: flex;
+    }
+
+    button {
+        color        : #3f51b5;
+        border-right : 1px solid rgba(63, 81, 181, 0.5);
+        border-top   : 1px solid rgba(63, 81, 181, 0.5);
+        border-bottom: 1px solid rgba(63, 81, 181, 0.5);
+        padding      : 5px 15px;
+        outline      : none;
+
+        &:first-child {
+            border-radius: 5px 0 0 5px;
+            border-left  : 1px solid rgba(63, 81, 181, 0.5);
+
+        }
+
+        &:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+    }
+}

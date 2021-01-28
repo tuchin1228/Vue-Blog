@@ -1,0 +1,83 @@
+.resContent {
+    padding   : 3vh 2vw 150px 2vw;
+    background: #eefaff;
+
+    h3.total {
+        font-size     : 1.3em;
+        font-weight   : 300;
+        margin        : 2vh 0vw;
+        letter-spacing: 1.5px;
+    }
+
+    p.nores {
+        color         : #2a6eb3;
+        padding       : 3vh 0;
+        font-weight   : 300;
+        font-size     : 1.5em;
+        text-align    : center;
+        letter-spacing: 1.5px;
+    }
+
+    .resbox {
+        padding      : 2vh 0vw 0vh 0;
+        border-bottom: 1px solid rgb(231, 231, 231);
+    }
+
+    .resbox .resbox_title {
+        display    : flex;
+        align-items: center;
+
+        i {
+            width        : 2em;
+            height       : 2em;
+            margin-right : 10px;
+            padding      : 6px;
+            border-radius: 100%;
+
+            &.pushicon {
+                color : #ff9292;
+                border: 2px solid #ff9292;
+            }
+
+            &.hateicon {
+                color : #61ad91;
+                border: 2px solid #61ad91;
+            }
+
+            &.resicon {
+                color : #9fd3ff;
+                border: 2px solid #9fd3ff;
+            }
+        }
+
+    }
+
+    .resbox_title_item {
+        h2 {
+            margin        : 0px;
+            font-weight   : 300;
+            font-size     : 1.2em;
+            letter-spacing: 1.4px;
+            color         : rgb(99, 99, 99);
+        }
+
+        h3 {
+            margin        : 0px;
+            font-size     : 1.1em;
+            font-weight   : 300;
+            letter-spacing: 1.4px;
+            color         : rgb(99, 99, 99);
+        }
+    }
+
+    .resbox_content {
+        padding       : 2vh 0;
+        letter-spacing: 1.5px;
+        font-size     : 1.1em;
+        font-weight   : 300;
+        img{
+            width: 100%;
+            max-width: 500px;
+        }
+    }
+}

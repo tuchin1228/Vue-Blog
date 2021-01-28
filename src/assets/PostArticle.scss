@@ -1,0 +1,79 @@
+.postpage {
+    background   : white;
+    width        : 98%;
+    box-sizing   : border-box;
+    max-width    : $middle_width;
+    margin       : 6vh auto 0vh auto;
+    min-height   : 100vh;
+    border-radius: 5px;
+    padding      : 2vh 2vw;
+}
+
+.postpage .postbar {
+    display      : flex;
+    padding      : 1vh 0;
+    flex-wrap    : wrap;
+    border-bottom: 1px solid rgb(223, 223, 223);
+
+    h3 {
+        margin   : 0 2vw;
+        font-size: 1.4em;
+    }
+
+    h5 {
+
+        margin   : 0 2vw 1vh 2vw;
+        font-size: 1.4em;
+        width    : 100%;
+    }
+
+    h6 {
+
+        font-size: 1.4em;
+    }
+
+    h4 {
+        font-size: 1.4em;
+    }
+
+    input {
+        width : 70%;
+        border: 1px solid rgb(223, 223, 223);
+    }
+
+    select {
+        outline           : none;
+        letter-spacing    : 2px;
+        color             : rgb(75, 75, 75);
+        border            : 1px solid rgb(197, 197, 197);
+        padding           : 0.5vh 0.5vw;
+        -webkit-appearance: auto;
+    }
+
+    .ck-editor {
+        width: 100%;
+    }
+
+    .ck-content {
+        height    : 40vh;
+        max-height: 40vh;
+    }
+}
+
+.postpage .btnbar {
+    display        : flex;
+    justify-content: flex-end;
+
+    button {
+        margin: 1vh 10px;
+        color : white;
+
+        &:first-child {
+            background: $primary_color;
+        }
+
+        &:last-child {
+            background: rgb(255, 68, 68);
+        }
+    }
+}

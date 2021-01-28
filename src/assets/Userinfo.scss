@@ -1,0 +1,183 @@
+.userinfo {
+    background   : white;
+    width        : 98%;
+    box-sizing   : border-box;
+    max-width    : $middle_width;
+    min-height   : 100%;
+    border-radius: 5px;
+    padding      : 3vh 0 0 0;
+    position     : relative;
+    margin       : 6vh auto 0vh auto;
+    box-shadow   : 0px 8px 11px #0da6ff9e;
+}
+
+.userinfo .editbox {
+    width     : 100%;
+    text-align: right;
+    padding   : 0 1vw;
+}
+
+.userinfo .infobox {
+    padding        : 0 2vw 4vh 2vw;
+    // text-align: center;
+    display        : flex;
+    justify-content: flex-start;
+    flex-wrap      : wrap;
+    align-items    : center;
+
+    .infoimgbox {
+        width        : 150px;
+        height       : 150px;
+        border-radius: 100%;
+        text-align   : center;
+        border       : 3px solid #5faaff;
+        margin       : 1vh 20px 1vh;
+        overflow     : hidden;
+        position     : relative;
+    }
+
+    .infoimgbox img {
+
+        top      : 50%;
+        position : absolute;
+        left     : 50%;
+        transform: translate(-50%, -50%);
+        height   : 100%;
+    }
+
+
+    .infocontent {}
+
+    h2 {
+        width         : 100%;
+        font-size     : 1.1em;
+        letter-spacing: 1.5px;
+        color         : rgb(177, 177, 177);
+        font-weight   : 300;
+
+        span {
+            font-weight : 500;
+            color       : #5faaff;
+            font-size   : 1.3em;
+            margin-right: 5px;
+        }
+    }
+
+    h3 {
+        font-size     : 1.2em;
+        font-weight   : 500;
+        letter-spacing: 1.5px;
+        margin        : 1vh 0;
+
+        span {
+            margin-left: 5px;
+            color      : #5faaff;
+        }
+
+        small {
+            padding-left: 10px;
+            color       : rgb(177, 177, 177);
+            font-size   : 0.9em;
+            font-weight : 300;
+        }
+    }
+
+}
+
+.userinfo h4.ownpost {
+    margin        : 2vh 3vw;
+    font-size     : 1.4em;
+    color         : #5faaff;
+    font-weight   : 400;
+    letter-spacing: 1.5px;
+}
+
+.edit_area {
+    padding: 2vh 2vw;
+
+    .avatorbox {
+        text-align: center;
+    }
+
+    .uploadbtn {
+        cursor       : pointer;
+        background   : #5faaff;
+        overflow     : hidden;
+        width        : 120px;
+        height       : 40px;
+        position     : relative;
+        margin       : 1vh auto;
+        border-radius: 5px;
+        box-shadow   : 0 5px 0 #498ad4;
+
+        span {
+            width    : 100%;
+            font-size: 1.1em;
+            color    : white;
+            top      : 50%;
+            left     : 50%;
+            transform: translate(-50%, -50%);
+            position : absolute;
+        }
+
+        input {
+            opacity: 0;
+            height : 100%;
+            width  : 100%;
+        }
+
+        &:hover {
+            background: #75b5ff;
+        }
+    }
+
+    .avatorbox .imgarea {
+        width        : 250px;
+        height       : 250px;
+        border-radius: 100%;
+        text-align   : center;
+        border       : 3px solid #5faaff;
+        margin       : 1vh auto;
+        overflow     : hidden;
+        position     : relative;
+    }
+
+    .avatorbox .imgarea img {
+
+        top      : 50%;
+        position : absolute;
+        left     : 50%;
+        transform: translate(-50%, -50%);
+        height   : 100%;
+    }
+
+    .inputbox {
+        // width: fit-content;
+        margin   : 1vh auto;
+        width    : 100%;
+        max-width: 500px;
+    }
+
+    .inputbox label {
+        width         : 10%;
+        font-size     : 1.2em;
+        letter-spacing: 2px;
+        text-align    : center;
+        color         : #5faaff;
+    }
+
+    .inputbox .v-input {
+        margin-top: 0.5vh;
+        width     : 100%;
+    }
+
+    .edit_confirm {
+        width     : 100%;
+        text-align: center;
+    }
+
+    .edit_confirm button {
+        margin: 1vh 10px;
+    }
+
+}
