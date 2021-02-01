@@ -46,17 +46,18 @@
       </v-dialog>
     </section>
     <section class="content_title">
-      <div class="user_avator">
-        <img src="@/assets/img/user.png" alt="" v-if="authorInfo.avator == 0" />
-        <img :src="authorInfo.avator" alt="" v-else />
-      </div>
-
       <router-link
         :to="{ path: `/clientinfo/${article_content.authorID}` }"
         class="content_title_info"
       >
-        <h3>{{ article_content.author }}({{ authorInfo.nickname }})</h3>
-        <h4 />
+        <div class="user_avator">
+          <img src="@/assets/img/user.png" alt="" v-if="authorInfo.avator == 0" />
+          <img :src="authorInfo.avator" alt="" v-else />
+        </div>
+
+        <h3>
+          {{ article_content.author }}<br class="hidden-sm-and-up" />({{ authorInfo.nickname }})
+        </h3>
       </router-link>
     </section>
     <section class="content_theme">
@@ -159,8 +160,6 @@ export default {
               `${process.env.VUE_APP_baseUrl}/deletearticle/${vm.article_content.boardname}/${vm.article_content.time}`,
             )
             .then((res) => {
-              // console.log(res);
-
               this.$store.commit('setLoadingStatus', false);
               if (res.data.message === 'success') {
                 this.$store.dispatch('showalerts', {

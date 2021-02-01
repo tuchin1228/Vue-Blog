@@ -127,7 +127,17 @@ export default {
     submitRes() {
       const vm = this;
       if (!vm.Userinfo.email) {
-        alert('尚未登入');
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '尚未登入',
+        });
+      } else if (vm.rescontent === '') {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '未輸入內文',
+        });
       } else {
         const timestamp = Math.floor(Date.now() / 1000);
         const resObj = {
@@ -148,6 +158,7 @@ export default {
               vm.rescontent = '';
               vm.inputIng = false;
               this.$store.dispatch('getArticleContent', this.$route.params.time);
+              // this.$router.push(`/${vm.ArticleContent.boardname}/${vm.ArticleContent.time}`);
             }
           });
       }

@@ -144,7 +144,6 @@ export default {
           {},
         );
       const authtoken = cookiesObj.kaigangtoken;
-      console.log('id', this.$route.params.id);
 
       this.$store.commit('setLoadingStatus', true);
       this.$http
@@ -154,7 +153,6 @@ export default {
         })
         .then((res) => {
           this.$store.commit('setLoadingStatus', false);
-          // console.log(res.data.message)
           if (res.data.message === 'success') {
             this.editing = false;
             this.getUserInfo();
@@ -174,11 +172,9 @@ export default {
     },
     // 取得該頁用戶
     getUserInfo() {
-      //   console.log(this.$route.params.id);
       this.$store.dispatch('getUserInfo', this.$route.params.id);
     },
     checkClient() {
-      console.log('驗證中');
       const vm = this;
       const cookies = document.cookie;
       const cookiesObj = cookies
@@ -193,31 +189,28 @@ export default {
         );
       if (cookiesObj.kaigangtoken) {
         const tokeobj = jwtDecode(cookiesObj.kaigangtoken);
-        console.log('tokeobj', tokeobj);
+
         if (
           tokeobj.user_id === vm.$route.params.id
           //   && tokeobj.user_email === this.$store.state.Userinfo.email
         ) {
-          console.log('驗證正確');
           vm.editRole = true;
         } else {
-          console.log('驗證錯誤1');
           vm.editRole = false;
         }
       } else {
-        console.log('驗證錯誤2');
         vm.editRole = false;
       }
     },
     uploadImg(event) {
       const vm = this;
-      console.log(event);
+
       const file = event.target.files[0];
       const formData = new FormData();
       formData.append('image', file);
 
       this.$store.commit('setLoadingStatus', true);
-      console.log(formData);
+
       vm.$http
         .post(`${process.env.VUE_APP_baseUrl}/auth/uploadavator`, formData, {
           headers: {

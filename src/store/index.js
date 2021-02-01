@@ -37,6 +37,7 @@ export default new Vuex.Store({
     SET_AUTHOR_INFO(state, authorinfo) {
       state.AuthorInfo = authorinfo;
     },
+
     setLoadingStatus(state, payload) {
       state.isLoading = payload;
     },
@@ -53,30 +54,24 @@ export default new Vuex.Store({
     },
     getBoardList({ commit }) {
       // const vm = this;
-      commit('setLoadingStatus', true);
+      // commit('setLoadingStatus', true);
       axios.get(`${process.env.VUE_APP_baseUrl}/boardlist`).then((res) => {
         // vm.BoardList = res.data.data;
         commit('SET_BOARDLIST', res.data.data);
 
-        commit('setLoadingStatus', false);
+        // commit('setLoadingStatus', false);
       });
     },
-    getArticleListByBoard({ commit }, { kind, keyword }) {
+    getArticleListByBoard({ commit }, { kind, keyword, page }) {
       commit('setLoadingStatus', true);
-      axios.get(`${process.env.VUE_APP_baseUrl}/articlelist/${kind}/${keyword}`).then((res) => {
-        // if (res.data === 'not exist') {
-        //   commit('SET_ARTICLELIST_BY_BOARD', '');
-        // } else {
-        console.log(res.data);
+      axios.get(`${process.env.VUE_APP_baseUrl}/articlelist/${kind}/${keyword}/${page}`).then((res) => {
         commit('SET_ARTICLELIST_BY_BOARD', res.data);
-
         commit('setLoadingStatus', false);
       });
     },
     getArticleListByUser({ commit }, { kind, keyword }) {
       commit('setLoadingStatus', true);
       axios.get(`${process.env.VUE_APP_baseUrl}/articlelist/${kind}/${keyword}`).then((res) => {
-        console.log(res.data);
         commit('SET_ARTICLELIST_BY_USER', res.data);
 
         commit('setLoadingStatus', false);
@@ -101,7 +96,6 @@ export default new Vuex.Store({
         `${process.env.VUE_APP_baseUrl}/auth/authorinfo/${articlecontent.data.data.authorID}`,
       );
 
-      console.log(articlecontent.data.data, authorinfo);
       commit('SET_ARTICLE_CONTENT', articlecontent.data);
       commit('SET_AUTHOR_INFO', authorinfo.data);
 

@@ -118,7 +118,6 @@ export default {
               editcontent: vm.editobj,
             })
             .then((res) => {
-              console.log(res);
               if (res.data.message === 'success') {
                 this.$store.dispatch('showalerts', {
                   isShow: true,

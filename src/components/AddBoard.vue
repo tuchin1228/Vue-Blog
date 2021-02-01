@@ -93,6 +93,42 @@ export default {
           type: 'danger',
           content: '權限不足',
         });
+      } else if (vm.newboard.boardname === '') {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '未輸入英文看板名稱',
+        });
+      } else if (vm.newboard.chinese === '') {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '未輸入中文看板名稱',
+        });
+      } else if (vm.newboard.category.length < 2) {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '看板分類至少兩項',
+        });
+      } else if (vm.article_category === '') {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '未選擇文章分類',
+        });
+      } else if (vm.article_title === '') {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '未輸入標題',
+        });
+      } else if (vm.article_content === '') {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '未輸入內文',
+        });
       } else {
         const timestamp = Math.floor(Date.now() / 1000);
         const newArticle = {

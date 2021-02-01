@@ -8,7 +8,7 @@
         <v-icon class="resicon" v-if="item.res_status === 'res'">mdi-message-text</v-icon>
 
         <div class="resbox_title_item">
-          <h2>{{ item.res_author }}</h2>
+          <h2>{{ item.res_author |mailfilter}}</h2>
           <h3>B{{ index + 1 }} | {{ item.res_time | totime }}</h3>
         </div>
       </div>

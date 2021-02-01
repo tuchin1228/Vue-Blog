@@ -113,44 +113,69 @@ export default {
         };
       } else {
         this.$router.go(-1);
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '尚未登入',
+        });
       }
     },
     submitArticle() {
       const vm = this;
       let chineseboardname = '';
-      // 取得板塊中文名稱
-      vm.boardlist.forEach((item) => {
-        if (item.boardname === vm.postboard) {
-          chineseboardname = item.chinese;
-        }
-      });
-      const detail = {
-        title: vm.posttitle,
-        author: vm.Userinfo.email,
-        authorID: vm.Userinfo.id,
-        nickname: vm.Userinfo.nickname,
-        content: vm.postcontent,
-        boardname: vm.postboard,
-        chineseboard: chineseboardname,
-        category: vm.postcategory,
-        article_res: [],
-      };
-      console.log(detail);
 
-      this.$store.commit('setLoadingStatus', true);
-      this.$http.post(`${process.env.VUE_APP_baseUrl}/postarticle`, detail).then((res) => {
-        console.log(res);
+      if (vm.postcategory === '') {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '未選擇分類',
+        });
+      } else if (vm.posttitle === '') {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '未輸入標題',
+        });
+      } else if (vm.postcontent === '') {
+        this.$store.dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '未輸入內文',
+        });
+      } else {
+        // 取得板塊中文名稱
 
-        this.$store.commit('setLoadingStatus', false);
-        if (res.data.message === 'success') {
-          this.$store.dispatch('showalerts', {
-            isShow: true,
-            type: 'success',
-            content: '成功Po文',
-          });
-          vm.$router.push(`/${vm.postboard}/${res.data.id}`);
-        }
-      });
+        vm.boardlist.forEach((item) => {
+          if (item.boardname === vm.postboard) {
+            chineseboardname = item.chinese;
+          }
+        });
+
+        const detail = {
+          title: vm.posttitle,
+          author: vm.Userinfo.email,
+          authorID: vm.Userinfo.id,
+          nickname: vm.Userinfo.nickname,
+          content: vm.postcontent,
+          boardname: vm.postboard,
+          chineseboard: chineseboardname,
+          category: vm.postcategory,
+          article_res: [],
+        };
+
+        this.$store.commit('setLoadingStatus', true);
+        this.$http.post(`${process.env.VUE_APP_baseUrl}/postarticle`, detail).then((res) => {
+          this.$store.commit('setLoadingStatus', false);
+          if (res.data.message === 'success') {
+            this.$store.dispatch('showalerts', {
+              isShow: true,
+              type: 'success',
+              content: '成功Po文',
+            });
+            vm.$router.push(`/${vm.postboard}/${res.data.id}`);
+          }
+        });
+      }
     },
   },
 };

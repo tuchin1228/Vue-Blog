@@ -98,7 +98,6 @@ export default {
             return item;
           }
           if (vm.filterDate.length === 0) {
-            //   console.log('null');
             return vm.articlelist;
           }
           return 0;
@@ -143,16 +142,16 @@ export default {
         .then((res) => {
           this.$store.commit('setLoadingStatus', false);
           if (res.data.message === 'success') {
-            this.$store.dispatch('getArticleListByBoard', {
-              kind: 'boardname',
-              keyword: vm.deleteinfo.boardname,
-            });
+            // this.$store.dispatch('getArticleListByBoard', {
+            //   kind: 'boardname',
+            //   keyword: vm.deleteinfo.boardname,
+            // });
+            this.getArticle();
           }
         });
     },
     getArticle() {
       const vm = this;
-
       this.$store.commit('setLoadingStatus', true);
       this.$http
         .get(`${process.env.VUE_APP_baseUrl}/articlelist/boardname/${vm.filterBoardname}`)

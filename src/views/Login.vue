@@ -9,13 +9,7 @@
         label="Email"
         prepend-inner-icon="mdi-account-circle"
       />
-      <v-text-field
-        v-model="password"
-        flat
-        solo
-        label="password"
-        prepend-inner-icon="mdi-account-circle"
-      />
+      <v-text-field v-model="password" flat solo label="password" prepend-inner-icon="mdi-lock" />
       <div class="login_btn">
         <v-btn depressed large class="white--text" @click="status = 'signup'">
           註冊
@@ -25,39 +19,82 @@
         </v-btn>
       </div>
     </div>
-    <div v-if="status == 'signup'" class="login_signup">
-      <h2>會員註冊</h2>
-      <v-text-field
-        v-model="email"
-        flat
-        solo
-        label="Email*"
-        prepend-inner-icon="mdi-account-circle"
-      />
-      <v-text-field
-        v-model="password"
-        flat
-        solo
-        label="password*"
-        prepend-inner-icon="mdi-account-circle"
-      />
+    <validation-observer v-slot="{ invalid }">
+      <div v-if="status == 'signup'" class="login_signup">
+        <h2>會員註冊</h2>
 
-      <v-text-field
-        v-model="nickname"
-        flat
-        solo
-        label="暱稱*"
-        prepend-inner-icon="mdi-account-circle"
-      />
-      <div class="login_btn">
-        <v-btn depressed large class="white--text" @click="status = 'signin'">
-          回上頁
-        </v-btn>
-        <v-btn depressed large class="white--text" @click="signup">
-          註冊並登入
-        </v-btn>
+        <validation-provider rules="required|email" v-slot="{ errors, classes }">
+          <div class="textbar">
+            <!-- <v-text-field
+            v-model="email"
+            flat
+            solo
+            name="Email"
+            label="Email*"
+            :class="classes"
+            prepend-inner-icon="mdi-account-circle"
+          /> -->
+            <!-- <label for="email">信箱*</label> -->
+            <input type="text" :class="classes" name="Email" v-model="email" placeholder="信箱*" />
+
+            <span class="invalid-feedback">{{ errors[0] }}</span>
+          </div>
+        </validation-provider>
+
+        <validation-provider rules="required" v-slot="{ errors, classes }">
+          <div class="textbar">
+            <!-- <v-text-field
+          v-model="password"
+          flat
+          solo
+          label="password*"
+          prepend-inner-icon="mdi-account-circle"
+        /> -->
+            <!-- <label for="email">密碼*</label> -->
+            <input
+              type="text"
+              :class="classes"
+              name="密碼"
+              v-model="password"
+              placeholder="密碼*"
+            />
+
+            <span class="invalid-feedback">{{ errors[0] }}</span>
+          </div>
+        </validation-provider>
+
+        <validation-provider rules="required" v-slot="{ errors, classes }">
+          <div class="textbar">
+            <!-- <v-text-field
+          v-model="nickname"
+          flat
+          solo
+          label="暱稱*"
+          prepend-inner-icon="mdi-account-circle"
+        /> -->
+            <!-- <label for="email">暱稱*</label> -->
+            <input
+              type="text"
+              :class="classes"
+              name="暱稱"
+              v-model="nickname"
+              placeholder="暱稱*"
+            />
+
+            <span class="invalid-feedback">{{ errors[0] }}</span>
+          </div>
+        </validation-provider>
+
+        <div class="login_btn">
+          <v-btn depressed large class="white--text" @click="status = 'signin'">
+            回上頁
+          </v-btn>
+          <v-btn depressed large class="white--text" @click="signup" :disabled="invalid">
+            註冊並登入
+          </v-btn>
+        </div>
       </div>
-    </div>
+    </validation-observer>
   </div>
 </template>
 
@@ -85,9 +122,53 @@ export default {
         .then((res) => {
           this.$store.commit('setLoadingStatus', false);
           if (res.data.message === 'success') {
-            console.log('配token');
+            this.$store.dispatch('showalerts', {
+              isShow: true,
+              type: 'success',
+              content: '登入成功',
+            });
             document.cookie = `kaigangtoken=${res.data.token}`;
             this.$router.push('/');
+          } else {
+            this.$store.dispatch('showalerts', {
+              isShow: true,
+              type: 'danger',
+              content: '登入失敗',
+            });
+          }
+        });
+    },
+    signup() {
+      const vm = this;
+      this.$store.commit('setLoadingStatus', true);
+      this.$http
+        .post(`${process.env.VUE_APP_baseUrl}/auth/signup`, {
+          email: vm.email,
+          password: vm.password,
+          nickname: vm.nickname,
+          role: 'ordinary',
+          interest: '',
+          spec: '',
+          avator: '',
+
+        })
+        .then((res) => {
+          this.$store.commit('setLoadingStatus', false);
+          if (res.data.success) {
+            this.$store.dispatch('showalerts', {
+              isShow: true,
+              type: 'success',
+              content: '成功註冊',
+            });
+            vm.status = 'signin';
+            vm.email = '';
+            vm.password = '';
+          } else {
+            this.$store.dispatch('showalerts', {
+              isShow: true,
+              type: 'danger',
+              content: '帳號已被註冊',
+            });
           }
         });
     },
