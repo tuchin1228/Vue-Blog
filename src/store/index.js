@@ -53,13 +53,8 @@ export default new Vuex.Store({
       }, 3000);
     },
     getBoardList({ commit }) {
-      // const vm = this;
-      // commit('setLoadingStatus', true);
       axios.get(`${process.env.VUE_APP_baseUrl}/boardlist`).then((res) => {
-        // vm.BoardList = res.data.data;
         commit('SET_BOARDLIST', res.data.data);
-
-        // commit('setLoadingStatus', false);
       });
     },
     getArticleListByBoard({ commit }, { kind, keyword, page }) {
@@ -89,9 +84,6 @@ export default new Vuex.Store({
       const articlecontent = await axios.get(
         `${process.env.VUE_APP_baseUrl}/articlecontent/${time}`,
       );
-      //  .then((res) => {
-      //     commit('SET_ARTICLE_CONTENT', res.data);
-      //   })
       const authorinfo = await axios.get(
         `${process.env.VUE_APP_baseUrl}/auth/authorinfo/${articlecontent.data.data.authorID}`,
       );
@@ -101,16 +93,7 @@ export default new Vuex.Store({
 
       commit('setLoadingStatus', false);
     },
-    // getAuthorInfo({ commit }, authorID) {
-    //   axios.get(`${process.env.VUE_APP_baseUrl}/authorinfo/${authorID}`).then((res) => {
-    //     commit('SET_AUTHOR_INFO', res.data);
-    //   });
-    // },
-    // async getArticleList ({ commit }, { kind, keyword }) {
 
-    //   console.log('vuex getArticleList ', ArticleByBoard.data)
-    //   commit('GET_ARTICLELIST_BY_BOARD', ArticleByBoard.data)
-    // }
   },
   modules: {},
   getters: {

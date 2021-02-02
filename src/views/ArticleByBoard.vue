@@ -49,19 +49,11 @@ export default {
     // 取得總頁數
     await vm.getAllPages();
 
-    await window.addEventListener('scroll', () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight && this.nowPage < 0) {
-        vm.getArticles(vm.nowPage);
-      }
-    });
+    await vm.eventlisten();
   },
   destroyed() {
     const vm = this;
-    window.removeEventListener('scroll', () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight && this.nowPage < 0) {
-        vm.getArticles(vm.nowPage);
-      }
-    });
+    window.removeEventListener('scroll', vm.getArticles(vm.nowPage));
   },
   watch: {
     $route() {
@@ -69,7 +61,6 @@ export default {
       this.getAllPages();
     },
     ArticleLists() {
-      // console.log('ArticleListst', this.ArticleLists.data);
       if (this.ArticleLists.data === null) {
         this.$router.push('/');
       } else {
@@ -77,25 +68,19 @@ export default {
         this.ArticleLists.forEach((element) => {
           temparr.unshift(element);
         });
-        console.log('temparr', temparr);
         this.article_array.push(...temparr);
       }
     },
   },
   methods: {
     getAllPages() {
-      // console.log('取頁數');
       const vm = this;
       const { boardname } = this.$route.params;
       this.$http
         .get(`${process.env.VUE_APP_baseUrl}/articlelist/boardname/${boardname}/length`)
         .then((res) => {
-          // console.log('res', res.all_page);
-          console.log('拿到頁數', res);
-
           vm.all_page = Math.floor(res.data.all_length / 10) * -1 - 1;
           vm.nowPage = Math.floor(res.data.all_length / 10) * -1 - 1;
-          // this.$store.commit('setLoadingStatus', true);
           // 最新一頁未滿五筆資料在抓一頁
           if (res.data.all_length % 10 < 5) {
             vm.getArticles(vm.all_page);
@@ -107,8 +92,16 @@ export default {
           }
         });
     },
+    eventlisten() {
+      const vm = this;
+      window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight && this.nowPage < 0) {
+          vm.getArticles(vm.nowPage);
+        }
+      });
+    },
     getArticles(page) {
-      console.log('取資料', this.nowPage);
+      // const vm = this;
       const { boardname } = this.$route.params;
       this.$store.dispatch('getArticleListByBoard', {
         kind: 'boardname',

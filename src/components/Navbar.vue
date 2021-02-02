@@ -173,9 +173,7 @@ export default {
     this.checkOnline();
   },
   computed: {
-    // boardlist() {
-    //   return this.$store.getters.boardlist.data;
-    // },
+
   },
   watch: {
     $route() {
@@ -183,10 +181,6 @@ export default {
     },
   },
   methods: {
-    // logout() {
-    //   this.$cookiz.remove('kaigangtoken');
-    //   this.$router.push('/');
-    // },
     checkOnline() {
       const vm = this;
       const cookies = document.cookie;

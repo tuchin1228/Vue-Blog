@@ -192,7 +192,6 @@ export default {
 
         if (
           tokeobj.user_id === vm.$route.params.id
-          //   && tokeobj.user_email === this.$store.state.Userinfo.email
         ) {
           vm.editRole = true;
         } else {

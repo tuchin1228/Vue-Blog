@@ -16,7 +16,6 @@
 import Navbar from '@/components/Navbar.vue';
 import Loading from '@/components/Loading.vue';
 import Alert from '@/components/Alert.vue';
-// import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
   name: 'App',
@@ -26,15 +25,11 @@ export default {
     },
   },
   components: {
-    // HelloWorld,
     Navbar,
     Loading,
     Alert,
   },
-  created() {},
-  data: () => ({
-    //
-  }),
+
 };
 </script>
 <style lang="scss">

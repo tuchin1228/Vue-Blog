@@ -142,10 +142,6 @@ export default {
         .then((res) => {
           this.$store.commit('setLoadingStatus', false);
           if (res.data.message === 'success') {
-            // this.$store.dispatch('getArticleListByBoard', {
-            //   kind: 'boardname',
-            //   keyword: vm.deleteinfo.boardname,
-            // });
             this.getArticle();
           }
         });

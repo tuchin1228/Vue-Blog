@@ -42,7 +42,6 @@
         left            : 50%;
         transform       : translate(-50%, -50%);
         height          : 100%;
-        // box-sizing   : content-box;
     }
 
     .content_title_info {
@@ -187,11 +186,6 @@
         max-height: 20vh !important;
     }
 }
-
-// .ck-focused {
-//     height    : 20vh !important;
-//     max-height: 20vh !important;
-// }
 
 .resbar {
     border-top: 1px solid rgba(0, 0, 0, 0.15);

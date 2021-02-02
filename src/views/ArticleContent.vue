@@ -81,7 +81,6 @@ export default {
   created() {
     this.decodeToken();
     this.$store.dispatch('getArticleContent', this.$route.params.time);
-    // this.$store.dispatch('getAuthorInfo', this.$store.state.ArticleContent.data.id);
   },
   data() {
     return {
@@ -158,7 +157,6 @@ export default {
               vm.rescontent = '';
               vm.inputIng = false;
               this.$store.dispatch('getArticleContent', this.$route.params.time);
-              // this.$router.push(`/${vm.ArticleContent.boardname}/${vm.ArticleContent.time}`);
             }
           });
       }
