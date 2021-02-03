@@ -58,10 +58,10 @@ export default new Vuex.Store({
       });
     },
     getArticleListByBoard({ commit }, { kind, keyword, page }) {
-      commit('setLoadingStatus', true);
+      // commit('setLoadingStatus', true);
       axios.get(`${process.env.VUE_APP_baseUrl}/articlelist/${kind}/${keyword}/${page}`).then((res) => {
         commit('SET_ARTICLELIST_BY_BOARD', res.data);
-        commit('setLoadingStatus', false);
+        // commit('setLoadingStatus', false);
       });
     },
     getArticleListByUser({ commit }, { kind, keyword }) {

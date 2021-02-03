@@ -51,7 +51,7 @@ export default {
 
     await vm.eventlisten();
   },
-  destroyed() {
+  beforeDestroy() {
     const vm = this;
     window.removeEventListener('scroll', vm.getArticles(vm.nowPage));
   },
