@@ -1,6 +1,15 @@
-# vue-blogger
+# Vue-Blog 部落格
 
-## Project setup
+
+# Demo
+https://tuchin1228.github.io/Vue-Blog/#/chat
+
+>因後端伺服器上傳空間為免費Heroku空間，故載入速度較慢。
+
+### 網站介紹
+* 前台
+  * 帳號申請.登入
+
 ```
 npm install
 ```
