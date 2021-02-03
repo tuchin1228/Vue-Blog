@@ -48,7 +48,6 @@ export default {
     // infinite scroll
     // 取得總頁數
     await vm.getAllPages();
-
     await vm.eventlisten();
   },
   beforeDestroy() {
@@ -79,23 +78,26 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_baseUrl}/articlelist/boardname/${boardname}/length`)
         .then((res) => {
-          vm.all_page = Math.floor(res.data.all_length / 10) * -1 - 1;
-          vm.nowPage = Math.floor(res.data.all_length / 10) * -1 - 1;
-          // 最新一頁未滿五筆資料在抓一頁
-          if (res.data.all_length % 10 < 5) {
-            vm.getArticles(vm.all_page);
-            setTimeout(() => {
-              vm.getArticles(vm.nowPage);
-            }, 10);
-          } else {
-            vm.getArticles(vm.all_page);
-          }
+          vm.all_page = Math.floor(res.data.all_length / 10) * 1 + 1;
+          vm.nowPage = 1;
+          // // 最新一頁未滿五筆資料在抓一頁
+          // if (res.data.all_length % 10 < 5) {
+          vm.getArticles(vm.nowPage);
+          //   setTimeout(() => {
+          //     vm.getArticles(vm.nowPage);
+          //   }, 10);
+          // } else {
+          //   vm.getArticles(vm.all_page);
+          // }
         });
     },
     eventlisten() {
       const vm = this;
       window.addEventListener('scroll', () => {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight && this.nowPage < 0) {
+        if (
+          window.innerHeight + window.scrollY >= document.body.offsetHeight
+          && this.nowPage <= this.all_page
+        ) {
           vm.getArticles(vm.nowPage);
         }
       });

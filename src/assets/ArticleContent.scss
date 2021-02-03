@@ -37,11 +37,11 @@
     }
 
     .user_avator img {
-        top             : 50%;
-        position        : absolute;
-        left            : 50%;
-        transform       : translate(-50%, -50%);
-        height          : 100%;
+        top      : 50%;
+        position : absolute;
+        left     : 50%;
+        transform: translate(-50%, -50%);
+        height   : 100%;
     }
 
     .content_title_info {
@@ -72,6 +72,11 @@
         padding       : 0 3px;
         color         : rgb(128, 128, 128);
         font-size     : 1em;
+    }
+
+    &:hover {
+
+        background: aliceblue;
     }
 }
 
