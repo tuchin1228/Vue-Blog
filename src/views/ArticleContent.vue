@@ -140,6 +140,7 @@ export default {
       } else {
         const timestamp = Math.floor(Date.now() / 1000);
         const resObj = {
+          res_userid: vm.Userinfo.id,
           res_author: vm.Userinfo.email,
           res_status: vm.res_status,
           res_time: timestamp,

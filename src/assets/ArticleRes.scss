@@ -53,12 +53,17 @@
     }
 
     .resbox_title_item {
-        h2 {
+        h2 a {
             margin        : 0px;
             font-weight   : 300;
-            font-size     : 1.2em;
+            font-size     : 1em;
             letter-spacing: 1.4px;
             color         : rgb(99, 99, 99);
+
+            &:hover {
+                color     : rgb(0, 44, 163);
+                background: rgb(202, 229, 255);
+            }
         }
 
         h3 {
@@ -75,8 +80,9 @@
         letter-spacing: 1.5px;
         font-size     : 1.1em;
         font-weight   : 300;
-        img{
-            width: 100%;
+
+        img {
+            width    : 100%;
             max-width: 500px;
         }
     }
