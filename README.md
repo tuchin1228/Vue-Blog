@@ -1,6 +1,6 @@
 # Vue-Blog 部落格
 
-# Demo
+### Demo
 
 https://tuchin1228.github.io/Vue-Blog/#/chat
 
@@ -8,37 +8,29 @@ https://tuchin1228.github.io/Vue-Blog/#/chat
 
 ### 網站介紹
 
-* 前台
-  * 帳號申請.登入
-  * 會員資料修改瀏覽.最近Po文瀏覽
-  * 文章標題搜尋
-  * Po文(需驗證會員身分)
-  <br/>
-* 後台(需驗證管理員身分)
-  * 新增看板
-  * 文章過濾.刪除文章(不限作者)
-```
-npm install
-```
+> Front-End
 
-### Compiles and hot-reloads for development
+- 前台
+  - 帳號申請.登入
+  - 會員資料修改瀏覽.最近 Po 文瀏覽
+  - 文章標題搜尋
+  - 回應者個人資料瀏覽
+  - Po 文.編輯.刪除(需驗證會員.作者身分)
+  - 回應內容(需驗證會員身分)
+    <br/>
+- 後台(需驗證管理員身分)
+  - 新增看板
+  - 文章過濾.刪除文章(不限作者)
+    <br/>
 
-```
-npm run serve
-```
+> Back-End
 
-### Compiles and minifies for production
+- Node.js (Express 建立 API 路徑)
+- MongoDB (串接 Atlas 雲端資料庫)
 
-```
-npm run build
-```
+### 使用套件
 
-### Lints and fixes files
+- ckeditor(文章編輯器)
+- jwt-decode.vue-cookie(解讀 jwt.操作 cookies)
+- vee-validate (驗證)
 
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
