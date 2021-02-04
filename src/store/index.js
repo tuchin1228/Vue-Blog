@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import router from '../router/index';
 
 Vue.use(Vuex);
 
@@ -58,42 +59,57 @@ export default new Vuex.Store({
       });
     },
     getArticleListByBoard({ commit }, { kind, keyword, page }) {
-      // commit('setLoadingStatus', true);
-      axios.get(`${process.env.VUE_APP_baseUrl}/articlelist/${kind}/${keyword}/${page}`).then((res) => {
-        commit('SET_ARTICLELIST_BY_BOARD', res.data);
-        // commit('setLoadingStatus', false);
-      });
+      axios
+        .get(`${process.env.VUE_APP_baseUrl}/articlelist/${kind}/${keyword}/${page}`)
+        .then((res) => {
+          commit('SET_ARTICLELIST_BY_BOARD', res.data);
+        });
     },
     getArticleListByUser({ commit }, { kind, keyword }) {
       commit('setLoadingStatus', true);
       axios.get(`${process.env.VUE_APP_baseUrl}/articlelist/${kind}/${keyword}`).then((res) => {
         commit('SET_ARTICLELIST_BY_USER', res.data);
-
         commit('setLoadingStatus', false);
       });
     },
-    getUserInfo({ commit }, userID) {
+    getUserInfo({ commit, dispatch }, userID) {
       commit('setLoadingStatus', true);
       axios.get(`${process.env.VUE_APP_baseUrl}/auth/userinformation/${userID}`).then((res) => {
+        if (res.data.message === 'fail' || res.data.message === 'Not Exist') {
+          router.push('/');
+          dispatch('showalerts', {
+            isShow: true,
+            type: 'danger',
+            content: '無此帳戶',
+          });
+        } else {
+          commit('SET_USER_INFO', res.data.data);
+        }
         commit('setLoadingStatus', false);
-        commit('SET_USER_INFO', res.data.data);
       });
     },
-    async getArticleContent({ commit }, time) {
+    async getArticleContent({ commit, dispatch }, time) {
       commit('setLoadingStatus', true);
       const articlecontent = await axios.get(
         `${process.env.VUE_APP_baseUrl}/articlecontent/${time}`,
       );
-      const authorinfo = await axios.get(
-        `${process.env.VUE_APP_baseUrl}/auth/authorinfo/${articlecontent.data.data.authorID}`,
-      );
-
-      commit('SET_ARTICLE_CONTENT', articlecontent.data);
-      commit('SET_AUTHOR_INFO', authorinfo.data);
+      if (articlecontent.data.message === 'fail') {
+        dispatch('showalerts', {
+          isShow: true,
+          type: 'danger',
+          content: '查無文章內容',
+        });
+        router.push('/');
+      } else {
+        const authorinfo = await axios.get(
+          `${process.env.VUE_APP_baseUrl}/auth/authorinfo/${articlecontent.data.data.authorID}`,
+        );
+        commit('SET_ARTICLE_CONTENT', articlecontent.data);
+        commit('SET_AUTHOR_INFO', authorinfo.data);
+      }
 
       commit('setLoadingStatus', false);
     },
-
   },
   modules: {},
   getters: {

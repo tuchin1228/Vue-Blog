@@ -9,7 +9,14 @@
         label="Email"
         prepend-inner-icon="mdi-account-circle"
       />
-      <v-text-field v-model="password" flat solo label="password" prepend-inner-icon="mdi-lock" />
+      <v-text-field
+        type="password"
+        v-model="password"
+        flat
+        solo
+        label="password"
+        prepend-inner-icon="mdi-lock"
+      />
       <div class="login_btn">
         <v-btn depressed large class="white--text" @click="status = 'signup'">
           註冊
@@ -25,16 +32,6 @@
 
         <validation-provider rules="required|email" v-slot="{ errors, classes }">
           <div class="textbar">
-            <!-- <v-text-field
-            v-model="email"
-            flat
-            solo
-            name="Email"
-            label="Email*"
-            :class="classes"
-            prepend-inner-icon="mdi-account-circle"
-          /> -->
-            <!-- <label for="email">信箱*</label> -->
             <input type="text" :class="classes" name="Email" v-model="email" placeholder="信箱*" />
 
             <span class="invalid-feedback">{{ errors[0] }}</span>
@@ -43,16 +40,8 @@
 
         <validation-provider rules="required" v-slot="{ errors, classes }">
           <div class="textbar">
-            <!-- <v-text-field
-          v-model="password"
-          flat
-          solo
-          label="password*"
-          prepend-inner-icon="mdi-account-circle"
-        /> -->
-            <!-- <label for="email">密碼*</label> -->
             <input
-              type="text"
+              type="password"
               :class="classes"
               name="密碼"
               v-model="password"
@@ -65,14 +54,6 @@
 
         <validation-provider rules="required" v-slot="{ errors, classes }">
           <div class="textbar">
-            <!-- <v-text-field
-          v-model="nickname"
-          flat
-          solo
-          label="暱稱*"
-          prepend-inner-icon="mdi-account-circle"
-        /> -->
-            <!-- <label for="email">暱稱*</label> -->
             <input
               type="text"
               :class="classes"
@@ -150,7 +131,6 @@ export default {
           interest: '',
           spec: '',
           avator: '',
-
         })
         .then((res) => {
           this.$store.commit('setLoadingStatus', false);
