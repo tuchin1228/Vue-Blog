@@ -31,35 +31,35 @@ https://tuchin1228.github.io/Vue-Blog/#/chat
 - MongoDB (串接 Atlas 雲端資料庫)
 
 ### 網站畫面
-- 文章內容
+- 文章內容<br/>
 ![b2](https://user-images.githubusercontent.com/51053467/106904891-ae97a200-6736-11eb-8480-fefe158c65fe.png)
 <br/>
 
-- 回文內容
+- 回文內容<br/>
 ![b3](https://user-images.githubusercontent.com/51053467/106905010-ccfd9d80-6736-11eb-916f-fb313f9da2dc.png)
 <br/>
 
-- Po文
+- Po文<br/>
 ![b5](https://user-images.githubusercontent.com/51053467/106905082-e0a90400-6736-11eb-97ac-d5528dbe496e.png)
 <br/>
 
-- 選擇看板
+- 選擇看板<br/>
 ![b8](https://user-images.githubusercontent.com/51053467/106905132-ee5e8980-6736-11eb-8324-d5b30d448aa9.png)
 <br/>
 
-- 會員資料
+- 會員資料<br/>
 ![b9](https://user-images.githubusercontent.com/51053467/106905180-fb7b7880-6736-11eb-8548-ec002077ef15.png)
 <br/>
 
-- 登入/註冊
+- 登入/註冊<br/>
 ![b11](https://user-images.githubusercontent.com/51053467/106905226-07673a80-6737-11eb-972a-042789acca53.png)
 <br/>
 
-- 新增看板
+- 新增看板<br/>
 ![b6](https://user-images.githubusercontent.com/51053467/106905302-1d74fb00-6737-11eb-90eb-e0437072a19e.png)
 <br/>
 
-- 文章管理
+- 文章管理<br/>
 ![b7](https://user-images.githubusercontent.com/51053467/106905336-2665cc80-6737-11eb-9f6c-fa9dd5a0d5a3.png)
 
 
