@@ -129,9 +129,10 @@ export default {
   },
   watch: {
     Userinfo() {
+      console.log('change');
       this.$store.dispatch('getArticleListByUser', {
         kind: 'user',
-        keyword: this.Userinfo.email,
+        keyword: this.$route.params.id,
       });
       this.newInfo.interest = this.Userinfo.interest;
       this.newInfo.spec = this.Userinfo.spec;
