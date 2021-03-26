@@ -12,7 +12,10 @@ import Dashboard from '../views/Dashboard.vue';
 Vue.use(VueRouter);
 
 const routes = [
-
+  {
+    path: '/clientinfo',
+    redirect: '/chat',
+  },
   {
     path: '/clientinfo/:id',
     name: 'clientinfo',
