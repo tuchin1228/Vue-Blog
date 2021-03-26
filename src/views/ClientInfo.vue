@@ -46,7 +46,10 @@
         <div v-if="!editing" class="ArticleList" style="margin: 0">
             <ArticleList
                 :articlelist="this.$store.state.ArticleList.data"
-                v-if="this.$store.state.ArticleList.data.length !== 0"
+                v-if="
+                    this.$store.state.ArticleList.data &&
+                    this.$store.state.ArticleList.data.length
+                "
             />
             <h3 v-else style="text-align: center">無發佈任何文章</h3>
         </div>
@@ -129,7 +132,6 @@ export default {
   },
   watch: {
     Userinfo() {
-      console.log('change');
       this.$store.dispatch('getArticleListByUser', {
         kind: 'user',
         keyword: this.$route.params.id,
