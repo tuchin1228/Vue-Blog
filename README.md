@@ -3,9 +3,12 @@
 <br/>
 ### Demo
 
-https://tuchin1228.github.io/Vue-Blog/#/chat
-
-> 因後端伺服器上傳空間為免費 Heroku 空間，故載入速度較慢。
+- SPA版本
+  - https://tuchin1228.github.io/Vue-Blog/#/chat
+  - > 因後端伺服器上傳空間為免費 Heroku 空間，故載入速度較慢。
+- SSR(Nuxt)版本
+  - https://nuxt-kaigang-blog.herokuapp.com/chat
+  - > 因前後端伺服器上傳空間為免費 Heroku 空間，故載入速度較慢。
 
 ### 網站介紹
 

@@ -210,6 +210,7 @@ export default {
     logout() {
       this.$cookies.remove('kaigangtoken');
       window.location.reload();
+      this.$router.push('/');
     },
     goSearch() {
       if (this.searchcontent.trim() === '') {
