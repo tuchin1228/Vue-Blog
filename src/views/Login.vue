@@ -109,7 +109,7 @@ export default {
               type: 'success',
               content: '登入成功',
             });
-            document.cookie = `kaigangtoken=${res.data.token}`;
+            this.$cookies.set('kaigangtoken', res.data.token);
             this.$router.push('/');
           } else {
             this.$store.dispatch('showalerts', {
